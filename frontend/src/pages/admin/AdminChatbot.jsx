@@ -28,7 +28,6 @@ export default function AdminChatbot() {
         guardrails: config.guardrails,
         provider: config.provider,
         model: config.model,
-        api_key_override: config.api_key_override || null,
         active: config.active,
       });
       setConfig(data);
@@ -89,15 +88,11 @@ export default function AdminChatbot() {
               />
             </div>
             <div>
-              <label className="text-[10px] uppercase tracking-widest font-bold text-clinic-mist">API Key Override</label>
-              <input
-                value={config.api_key_override || ""}
-                onChange={(e) => setConfig({ ...config, api_key_override: e.target.value })}
-                placeholder="Leave empty to use default"
-                type="password"
-                className={inputCls}
-              />
-              <div className="text-[10px] text-clinic-mist mt-1">Leave empty to use the default OpenAI API key</div>
+              <label className="text-[10px] uppercase tracking-widest font-bold text-clinic-mist">API Key</label>
+              <div className="mt-1 rounded-lg border border-sand-300 bg-sand-50 px-3 py-2 text-sm text-clinic-mist">
+                Managed securely in Railway as OPENAI_API_KEY.
+              </div>
+              <div className="text-[10px] text-clinic-mist mt-1">Key overrides are disabled so old provider keys cannot be reused.</div>
             </div>
           </div>
         </div>

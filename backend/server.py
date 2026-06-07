@@ -978,7 +978,7 @@ async def chat_endpoint(payload: ChatRequest, db: AsyncSession = Depends(get_db)
     )
     history = list(reversed(hist_res.scalars().all()))
 
-    api_key = config.api_key_override or os.environ.get("OPENAI_API_KEY", "")
+    api_key = os.environ.get("OPENAI_API_KEY", "")
     if not api_key:
         logger.warning("OPENAI_API_KEY not configured for chat endpoint")
         return ChatResponse(
