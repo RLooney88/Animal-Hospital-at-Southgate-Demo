@@ -1,0 +1,93 @@
+{
+  "practice": {
+    "name": "Animal Hospital at Southgate",
+    "shortName": "Southgate Vet",
+    "displayLines": [
+      "Animal Hospital",
+      "at Southgate"
+    ],
+    "tagline": "Compassionate and high quality care for Glen Burnie pets.",
+    "description": "Animal Hospital at Southgate provides veterinary wellness, surgery, dental care, diagnostics, laser therapy, emergency care during business hours, and preventive medicine for pets in Glen Burnie, Maryland.",
+    "serviceArea": "Glen Burnie, MD"
+  },
+  "brand": {
+    "logo": "/brand/animal-hospital-southgate-logo.png",
+    "logoAlt": "Animal Hospital at Southgate logo",
+    "colors": {
+      "light": "#F7FBFD",
+      "dark": "#1F2F3A",
+      "accent": "#029CCA",
+      "accentLight": "#E7F7FC"
+    }
+  },
+  "contact": {
+    "phone": "(410) 609-9100",
+    "phoneHref": "tel:+14106099100",
+    "email": "",
+    "address": {
+      "street": "338 Hospital Drive",
+      "line2": "",
+      "city": "Glen Burnie",
+      "state": "MD",
+      "zip": "21061",
+      "country": "US"
+    }
+  },
+  "hours": [
+    [
+      "Monday",
+      "9:00 AM - 4:00 PM"
+    ],
+    [
+      "Tuesday",
+      "9:00 AM - 4:00 PM"
+    ],
+    [
+      "Wednesday",
+      "9:00 AM - 4:00 PM"
+    ],
+    [
+      "Thursday",
+      "9:00 AM - 4:00 PM"
+    ],
+    [
+      "Friday",
+      "9:00 AM - 7:00 PM"
+    ],
+    [
+      "Saturday",
+      "9:00 AM - 1:00 PM"
+    ],
+    [
+      "Sunday",
+      "Closed"
+    ]
+  ],
+  "links": {
+    "website": "https://www.ahsouthgate.com/",
+    "appointment": "https://www.ahsouthgate.com/online-forms.html",
+    "store": "",
+    "pharmacy": "",
+    "onlineForms": "https://www.ahsouthgate.com/online-forms.html",
+    "facebook": "",
+    "instagram": "",
+    "linkedin": "",
+    "googleBusinessProfile": ""
+  },
+  "team": [
+    {
+      "name": "Animal Hospital at Southgate Team",
+      "role": "Veterinary care team",
+      "bio": "A dedicated Glen Burnie veterinary team focused on compassionate care, continuing education, and modern medicine for pets and families.",
+      "image": ""
+    }
+  ],
+  "features": {
+    "clientPortal": true,
+    "onlineBooking": true,
+    "storeLink": false,
+    "pharmacyLink": false,
+    "onlineFormsLink": true,
+    "teamSection": true
+  }
+}
