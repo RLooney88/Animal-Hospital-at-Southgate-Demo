@@ -4,7 +4,7 @@
 Rebuild example-vet-site.com as a **Smart Site** that tracks visitor intent (Signals) to dynamically swap content (Switches) in designated areas (Surfaces). Use PostgreSQL on Railway, JWT auth, Dribbble "Pet Care" template layout with Vet Clinic brand colors.
 
 ## 2. Architecture
-- **Backend**: FastAPI + SQLAlchemy async + Postgres (Railway). JWT admin auth + JWT client portal auth. SendGrid email (pending key). Chatbot via emergentintegrations (GPT-4o-mini). Webhook outbound API.
+- **Backend**: FastAPI + SQLAlchemy async + Postgres (Railway). JWT admin auth + JWT client portal auth. SendGrid email (pending key). Chatbot via OpenAI API (GPT-4o-mini). Webhook outbound API.
 - **Frontend**: React 19 + React Router 7 + Tailwind + Shadcn/UI. SmartSiteProvider context manages session, signals, surfaces. Portal with separate client auth.
 - **Data model**: users, visitor_sessions, signal_events, surfaces, switches, lead_submissions, webhook_configs, chatbot_config, chat_messages, clients, pets, client_pet_links, pet_contacts, pet_health_records, pet_appointments.
 

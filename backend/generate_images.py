@@ -1,15 +1,15 @@
 """Generate animal images using OpenAI GPT Image 1."""
 import asyncio
+import base64
 import os
-import sys
-import time
 from pathlib import Path
+
 from dotenv import load_dotenv
+from openai import AsyncOpenAI
+
 load_dotenv(Path(__file__).parent / ".env")
 
-from emergentintegrations.llm.openai.image_generation import OpenAIImageGeneration
-
-API_KEY = os.environ.get("EMERGENT_LLM_KEY", "")
+API_KEY = os.environ.get("OPENAI_API_KEY", "")
 OUT_DIR = Path(__file__).parent.parent / "frontend" / "public" / "images" / "animals"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -47,16 +47,21 @@ PROMPTS = {
     "gp-skin": "A fluffy guinea pig being gently held in caring hands, soft fur visible, warm indoor lighting, gentle and compassionate, not graphic, professional pet photography, photorealistic, no text",
 }
 
-async def generate_one(gen, slug, prompt):
+async def generate_one(client: AsyncOpenAI, slug, prompt):
     out = OUT_DIR / f"{slug}.png"
     if out.exists():
         print(f"SKIP {slug} (exists)")
         return
     try:
         print(f"GEN  {slug}...")
-        images = await gen.generate_images(prompt=prompt, model="gpt-image-1", number_of_images=1)
-        if images:
-            out.write_bytes(images[0])
+        response = await client.images.generate(
+            model="gpt-image-1",
+            prompt=prompt,
+            size="1024x1024",
+            n=1,
+        )
+        if response.data and response.data[0].b64_json:
+            out.write_bytes(base64.b64decode(response.data[0].b64_json))
             print(f"OK   {slug} -> {out}")
         else:
             print(f"FAIL {slug}: no image returned")
@@ -64,9 +69,11 @@ async def generate_one(gen, slug, prompt):
         print(f"FAIL {slug}: {e}")
 
 async def main():
-    gen = OpenAIImageGeneration(api_key=API_KEY)
+    if not API_KEY:
+        raise RuntimeError("OPENAI_API_KEY is required")
+    client = AsyncOpenAI(api_key=API_KEY)
     for slug, prompt in PROMPTS.items():
-        await generate_one(gen, slug, prompt)
+        await generate_one(client, slug, prompt)
         await asyncio.sleep(1)  # Small delay between calls
     print("DONE - all images generated")
 
